@@ -82,9 +82,23 @@ stages:
                 $(imagePullSecret)
               containers: |
                 $(containerRegistry)/$(imageRepository):$(tag)
-                - task: CmdLine@2
-                  inputs:
-                    script: |
-                      echo test site joignable
-                      curl 20.74.18.24:3000
+
+- stage: Test
+  displayName: Test stage
+  dependsOn: Deploy
+
+  jobs:
+  - job: Test
+    displayName: Test
+    pool:
+      vmImage: $(vmImageName)
+      name: default
+      demands:
+      - agent.name -equals debian
+    steps:
+    - task: CmdLine@2
+      inputs:
+        script: |
+          echo test site joignable
+          curl 20.74.18.24:3000
 
