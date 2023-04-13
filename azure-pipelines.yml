@@ -100,5 +100,5 @@ stages:
       inputs:
         script: |
           echo test site joignable
-          curl 20.74.18.24:4000
+          curl -i 20.74.18.24:3000
 
