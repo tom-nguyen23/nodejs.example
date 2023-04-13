@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: tomnguyennodejsexample 
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomnguyennodejsexample
+  template:
+    metadata:
+      labels:
+        app: tomnguyennodejsexample 
+    spec:
+      containers:
+        - name: tomnguyennodejsexample 
+          image: containerregistry23.azurecr.io/tomnguyennodejsexample
+          ports:
+          - containerPort: 3000
