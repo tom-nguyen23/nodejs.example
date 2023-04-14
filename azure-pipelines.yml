@@ -38,6 +38,8 @@ stages:
       displayName: Build and push an image to container registry
       inputs:
         command: buildAndPush
+        env: 
+          DOCKER_BUILDKIT: 1
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
         containerRegistry: $(dockerRegistryServiceConnection)
